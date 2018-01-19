@@ -67,8 +67,20 @@ Route::group(['middleware' => ['auth']], function () {
         Route::patch('/updateassign/{id}', 'LeadsController@updateAssign');
         Route::patch('/updatestatus/{id}', 'LeadsController@updateStatus');
         Route::patch('/updatefollowup/{id}', 'LeadsController@updateFollowup')->name('leads.followup');
+
+       //Route::get(' /test/{id}','LeadsController@ictb');
+            //  Route::get(' /test/','LeadsController@test');
+      // Route::get('/test/{id}','LeadsController@test123');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      
+       // Route::any('/ictbroadcastfrom','LeadsController@Ictbroadcast');
+       //Route::post('/ictbroadcast','LeadsController@Ictbroadcastcampaign');
+
     });
         Route::resource('leads', 'LeadsController');
+
+
         Route::post('/comments/{type}/{id}', 'CommentController@store');
     /**
      * Settings
@@ -111,4 +123,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/newitem/{id}', 'InvoicesController@newItem')->name('invoice.new.item');
     });
         Route::resource('invoices', 'InvoicesController');
+
+        Route::get('/ictbroadcaststart', 'IctbroadcastcController@index');
+        Route::any('/ictbroadcastfrom','IctbroadcastcController@Ictbroadcast');
+        Route::post('/ictbroadcast','IctbroadcastcController@Ictbroadcastcampaign');
+
+        
+
 });
