@@ -15,6 +15,9 @@ use App\Repositories\User\UserRepositoryContract;
 use App\Http\Requests\Lead\UpdateLeadFollowUpRequest;
 use App\Repositories\Client\ClientRepositoryContract;
 use App\Repositories\Setting\SettingRepositoryContract;
+use Illuminate\Support\Facades\Redirect;
+
+use Input; 
 
 class LeadsController extends Controller
 {
@@ -37,6 +40,8 @@ class LeadsController extends Controller
         $this->middleware('lead.create', ['only' => ['create']]);
         $this->middleware('lead.assigned', ['only' => ['updateAssign']]);
         $this->middleware('lead.update.status', ['only' => ['updateStatus']]);
+       //$this->middleware('lead.update.status', ['only' => ['ictbroadcast']]);
+
     }
 
     /**
@@ -58,7 +63,9 @@ class LeadsController extends Controller
         $leads = Lead::select(
             ['id', 'title', 'user_created_id', 'client_id', 'user_assigned_id', 'contact_date']
         )->where('status', 1)->get();
-        return Datatables::of($leads)
+        return Datatables::of($leads)->addColumn('id', function ($leads) {
+                return $leads->id;
+            })
             ->addColumn('titlelink', function ($leads) {
                 return '<a href="leads/' . $leads->id . '" ">' . $leads->title . '</a>';
             })
@@ -145,4 +152,24 @@ class LeadsController extends Controller
         Session()->flash('flash_message', 'Lead is completed');
         return redirect()->back();
     }
+ /**
+     * Complete lead
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+
+    public function ictbroadcastform($id, Request $request){
+
+        echo "ictbroadcastform";
+
+
+    }
+
+   
+
+
+
+
+     
 }
