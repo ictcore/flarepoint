@@ -27,6 +27,7 @@ class IntegrationsController extends Controller
               $ictbroadcast = new empty_set;
                $ictbroadcast->api_key=''; 
                $ictbroadcast->org_id=''; 
+               $ictbroadcast->ictapi=''; 
             }
 
         return view('integrations.index',compact('ictbroadcast'))->withCheck($check);

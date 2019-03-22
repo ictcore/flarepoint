@@ -47,9 +47,9 @@
 
 
             <div class="form-group">
-                {!! Form::label('org_id',  __('URL'), ['class' => 'control-label']) !!}
+                {!! Form::label('ictapi',  __('URL'), ['class' => 'control-label']) !!}
                 <!--{!! Form::text('org_id', null, ['class' => 'form-control']) !!}-->
-                <input type="text" name="org_id" class="form-control" value="{{ $ictbroadcast->org_id  }}">
+                <input type="text" name="ictapi" class="form-control" value="{{ $ictbroadcast->ictapi  }}">
 
             </div>
 
