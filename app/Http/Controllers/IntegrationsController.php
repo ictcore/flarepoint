@@ -4,7 +4,9 @@ use DB;
 use App\Http\Requests;
 use App\Models\Integration;
 use Illuminate\Http\Request;
+class empty_set{
 
+}
 class IntegrationsController extends Controller
 {
     public function __construct()
@@ -20,7 +22,12 @@ class IntegrationsController extends Controller
     public function index()
     {
         $check = Integration::all();
-            $ictbroadcast = DB::table('integrations')->where('name','ICTBroadcast' ) ->get();
+            $ictbroadcast = DB::table('integrations')->where('name','ICTBroadcast' )->first();
+            if(empty($ictbroadcast)){
+              $ictbroadcast = new empty_set;
+               $ictbroadcast->api_key=''; 
+               $ictbroadcast->org_id=''; 
+            }
 
         return view('integrations.index',compact('ictbroadcast'))->withCheck($check);
     }

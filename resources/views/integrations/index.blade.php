@@ -41,7 +41,7 @@
             <div class="form-group">
                 {!! Form::label('api_key', __('Api key'), ['class' => 'control-label']) !!}
                 <!--{!! Form::text('api_key', null, ['class' => 'form-control']) !!}-->
-                <textarea  name="api_key" class="form-control" >{{ $ictbroadcast[0]->api_key  }}</textarea> 
+                <textarea  name="api_key" class="form-control" >{{ $ictbroadcast->api_key  }}</textarea> 
 
             </div>
 
@@ -49,7 +49,7 @@
             <div class="form-group">
                 {!! Form::label('org_id',  __('URL'), ['class' => 'control-label']) !!}
                 <!--{!! Form::text('org_id', null, ['class' => 'form-control']) !!}-->
-                <input type="text" name="org_id" class="form-control" value="{{ $ictbroadcast[0]->org_id  }}">
+                <input type="text" name="org_id" class="form-control" value="{{ $ictbroadcast->org_id  }}">
 
             </div>
 
