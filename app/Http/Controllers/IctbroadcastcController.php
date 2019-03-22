@@ -38,8 +38,8 @@ class IctbroadcastcController extends Controller
         $this->leads = $leads;
         $this->middleware('lead.create', ['only' => ['create']]);
         $this->middleware('lead.assigned', ['only' => ['updateAssign']]);
-        $this->middleware('lead.update.status', ['only' => ['updateStatus']]);
-        $this->middleware('lead.update.status', ['only' => ['Ictbroadcastcampaign']]);
+        //$this->middleware('lead.update.status', ['only' => ['updateStatus']]);
+        //$this->middleware('lead.update.status', ['only' => ['Ictbroadcastcampaign']]);
     }
 
     /**

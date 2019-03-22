@@ -31,8 +31,8 @@ class StoreClientRequest extends FormRequest
             'address' => '',
             'zipcode' => 'max:6',
             'city' => '',
-            'primary_number' => 'max:10',
-            'secondary_number' => 'max:10',
+            'primary_number' => 'max:12',
+            'secondary_number' => 'max:12',
             'industry_id' => 'required',
             'company_type' => '',
             'user_id' => 'required'
