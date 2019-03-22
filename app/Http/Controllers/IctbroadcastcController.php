@@ -84,7 +84,7 @@ public function Ictbroadcast(){
     if (is_object($result )) {
         $extention_data = '';
         $campaign_list ='';
-        return view('leads.ictbroadcast',compact('ids','extention_data','campaign_list'));
+        return view('leads.ictbroadcast',compact('ids','extention_data','campaign_list','contact'));
         exit;
     }
     $extention_data = '';
@@ -104,19 +104,21 @@ return view('leads.ictbroadcast',compact('ids','extention_data','campaign_list',
 }
 }
 public function Ictbroadcastcampaign(){
+            \Session::forget('id');
+            \Session::forget('contact');
             $ids = $_POST['ids'];
             $contact = $_POST['contact'];
             $id_arry =  explode(",", $ids );
             $ary = array($id_arry);
 
             if($contact !='clients'){
-                $leads = DB::table('leads')->whereIn('id',$ary[0] ) ->get();
+                $leads = DB::table('leads')->whereIn('id',$ary[0] )->get();
                 foreach($leads as $lead){
                  $client_id[] = $lead->id;
                 }
-                    $client = DB::table('clients')->whereIn('id',$client_id ) ->get();
+                    $client = DB::table('clients')->whereIn('id',$client_id )->get();
             }else{
-            $client = DB::table('clients')->whereIn('id',$ary[0]  ) ->get();
+            $client = DB::table('clients')->whereIn('id',$ary[0]  )->get();
             }
 
             $campaing_type = $_POST['campaign_type'];
